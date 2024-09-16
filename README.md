@@ -1,39 +1,62 @@
-# Crypto Kit.
-> An Ezrah react native take home.
+# Crypto Kit
+### *An Ezrah React Native Take-Home Assignment*
 
-## Quick Note.
-Thanks for attempting our take home. This is a very simple one. It focuses on your choices and decisions in designing and creating beautiful UIs.
+---
 
+## Quick Note
+We appreciate you taking the time to complete our take-home assignment. The goal of this task is simple: to evaluate your design choices and your ability to create beautiful and functional UIs using React Native.
 
-## React Native Base.
+---
 
-### Requirements Doc / Instructions
-This test has 3 major UI components. The base of the project has already been created, setting up the base for you to make it your own unique view and solution. 
-The UI flow.
-- Tokens View.
-- Single Token View
-- Settings View.
+## React Native Component Design
 
-The base structure of the Tokens View has been implement, Make the design yours (Recreate, Modify or Switch it up how ever you like)
+### Overview
+This assignment consists of three key UI components. We've provided the base structure to give you a starting point, but we encourage you to personalize the design and enhance the user experience. Let your creativity shine through!
 
-**Implement the following core featureset.**
+### UI Components
+1. **Tokens View**
+2. **Single Token View**
+3. **Settings View**
 
-- Users can view tokens on the list and favourite a token.
-- Users can Use their settings page to view a sample profile (nothing too serious) and view all the tokens they have favourited. In this page they can see the ones they've favourited and chosen to keep tabs on.
-- Users can view a single token view when they click on the Tokens within the Tokens page. They would be able to see major details of the token.
+The Tokens View has already been set up for you. Feel free to modify, recreate, or improve upon it in any way you like.
 
-**Refinement Ideas**
-> You can implement what every your interface / design concepts are within the Settings view and the Single token page, but here are some Ideas
-- Use a different font / product theme.
-- Chart and Graphs (Single Token Page)
-- etc. (Can't give out too much ideas 😉,, Let's see what you come up with.)
+### Core Feature Set
+Your task is to implement the following features:
 
-### APIs and Resources.
-The API integrated within the project and setup with example .env are credentials for a free plan of [https://pro.coinmarketcap.com/](https://pro.coinmarketcap.com/) You can create a free account and implement based on it.
-> Feel free to implement any other API end points within the API docs that could help you archieve your objectives.
+- **Token List & Favoriting:** Users should be able to view a list of tokens and favorite specific tokens.
+- **Settings Page:** This page should allow users to view a sample profile and see a list of their favorited tokens.
+- **Single Token View:** Clicking on a token in the list should take the user to a detailed view of that token, showing major information about the token.
 
-## Node JS Base
-Let's get a feel of your NodeJS skills. The Tasks is simple. Wrap the API in a graphql endpoint, With a properly defined query structure. Implement an LFU based Caching system for the data. 
+### Refinement Suggestions
+You are free to approach the design of the **Single Token View** and **Settings Page** in any way you see fit, but here are some suggestions to get you started:
+- Try using a unique font or theme to enhance the product's visual identity.
+- Consider adding charts or graphs to the Single Token View to visualize token data.
+- Any additional features or UI improvements you believe will elevate the user experience.
 
-## Conclusion.
-Good luck.
+We won’t give away too many ideas 😉—we’d love to see your creative vision in action!
+
+---
+
+## APIs & Resources
+We've integrated an API from [CoinMarketCap](https://pro.coinmarketcap.com/) using a free plan. You can find credentials set up in the project `.env` file.
+
+Feel free to explore and implement any additional API endpoints available in the CoinMarketCap API documentation to enhance your solution.
+
+---
+
+## Node.js Task
+
+### Overview
+In addition to the React Native component, we’d like to see your skills in Node.js. Your task is simple yet crucial: wrap the API in a GraphQL endpoint with a well-structured query system. Implement an LFU (Least Frequently Used) caching mechanism to optimize the data handling process.
+
+### Requirements
+- **GraphQL Endpoint:** Create a GraphQL server that interacts with the API and supports well-defined queries.
+- **LFU Caching:** Implement a caching system that follows the LFU algorithm to ensure efficient data retrieval and performance optimization.
+
+---
+
+## Final Thoughts
+We’re excited to see how you approach this task, and we encourage you to think outside the box! Focus on delivering clean code, user-friendly design, and smart optimization.
+
+Good luck! 🚀
+
