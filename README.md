@@ -3,9 +3,10 @@
 
 ---
 
-## Quick 
+## Quick
 Thank you for your time and effort in completing our take-home assignment.
 This task is designed to assess not just your technical skills, but also your creative approach to building intuitive, beautiful, and functional UIs in React Native. We want to see how you make thoughtful design choices and implement solutions that enhance the user experience.
+
 ---
 
 ## React Native Component Design
