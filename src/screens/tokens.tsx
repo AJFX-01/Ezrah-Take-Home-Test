@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
   FlatList,
-  Pressable,
   SafeAreaView,
   StyleSheet,
   StatusBar,
@@ -22,15 +21,15 @@ type Token = {
 }
 
 
-const renderItems = (data) => {
+const renderItems = ({index, item}) => {
   return (
     <AnimatedListItem>
       <View style={{ flex: 1, flexDirection: 'row' }}>
         <View style={{ flex: 1 }}>
-          <Text>{data.item.symbol}</Text>
+          <Text>{item.symbol}</Text>
         </View>
         <View style={{ flex: 3 }}>
-          <Text>{data.item.name}</Text>
+          <Text>{item.name}</Text>
         </View>
       </View>
     </AnimatedListItem>
@@ -39,43 +38,15 @@ const renderItems = (data) => {
 
 
 const Tokens: React.FC = () => {
-  const [tokens, updateTokenListing] = useState<Token[]>([]);
-
-
   const { isPending, error, data } = useQuery({
     queryKey: ['tokenList'],
     queryFn: async () => {
       const data = (await coinApi.getTokens());
-      if(data) {
+      if (data) {
         return data.data;
       }
     },
   });
-
-  const sampleData = [
-    {
-      'name': 'Bitcoin',
-      'symbol': 'BTC',
-      'max_supply': 1239999,
-      'total_supply': 232489384,
-    },
-    {
-      'name': 'Ethereum',
-      'symbol': 'ETH',
-      'max_supply': 1239999,
-      'total_supply': 232489384,
-    },
-    {
-      'name': 'SOLANA',
-      'symbol': 'SOL',
-      'max_supply': 1239999,
-      'total_supply': 232489384,
-    },
-  ];
-  //
-  //if (isPending) { return 'loading'; }
-  //
-  //if (error) { return 'An error has occured'; }
 
   return (
     <>
@@ -93,11 +64,9 @@ const Tokens: React.FC = () => {
               data={data}
               renderItem={renderItems}
             />
-          </View> }
+          </View>}
         </View>
       </SafeAreaView>
-
-
     </>
 
   );
