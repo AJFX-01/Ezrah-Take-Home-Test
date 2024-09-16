@@ -1,79 +1,39 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Crypto Kit.
+> An Ezrah react native take home.
 
-# Getting Started
+## Quick Note.
+Thanks for attempting our take home. This is a very simple one. It focuses on your choices and decisions in designing and creating beautiful UIs.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
-## Step 1: Start the Metro Server
+## React Native Base.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+### Requirements Doc / Instructions
+This test has 3 major UI components. The base of the project has already been created, setting up the base for you to make it your own unique view and solution. 
+The UI flow.
+- Tokens View.
+- Single Token View
+- Settings View.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+The base structure of the Tokens View has been implement, Make the design yours (Recreate, Modify or Switch it up how ever you like)
 
-```bash
-# using npm
-npm start
+**Implement the following core featureset.**
 
-# OR using Yarn
-yarn start
-```
+- Users can view tokens on the list and favourite a token.
+- Users can Use their settings page to view a sample profile (nothing too serious) and view all the tokens they have favourited. In this page they can see the ones they've favourited and chosen to keep tabs on.
+- Users can view a single token view when they click on the Tokens within the Tokens page. They would be able to see major details of the token.
 
-## Step 2: Start your Application
+**Refinement Ideas**
+> You can implement what every your interface / design concepts are within the Settings view and the Single token page, but here are some Ideas
+- Use a different font / product theme.
+- Chart and Graphs (Single Token Page)
+- etc. (Can't give out too much ideas 😉,, Let's see what you come up with.)
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+### APIs and Resources.
+The API integrated within the project and setup with example .env are credentials for a free plan of [https://pro.coinmarketcap.com/](https://pro.coinmarketcap.com/) You can create a free account and implement based on it.
+> Feel free to implement any other API end points within the API docs that could help you archieve your objectives.
 
-### For Android
+## Node JS Base
+Let's get a feel of your NodeJS skills. The Tasks is simple. Wrap the API in a graphql endpoint, With a properly defined query structure. Implement an LFU based Caching system for the data. 
 
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## Conclusion.
+Good luck.
