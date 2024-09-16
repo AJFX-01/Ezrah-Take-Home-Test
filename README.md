@@ -3,9 +3,9 @@
 
 ---
 
-## Quick Note
-We appreciate you taking the time to complete our take-home assignment. The goal of this task is simple: to evaluate your design choices and your ability to create beautiful and functional UIs using React Native.
-
+## Quick 
+Thank you for your time and effort in completing our take-home assignment.
+This task is designed to assess not just your technical skills, but also your creative approach to building intuitive, beautiful, and functional UIs in React Native. We want to see how you make thoughtful design choices and implement solutions that enhance the user experience.
 ---
 
 ## React Native Component Design
