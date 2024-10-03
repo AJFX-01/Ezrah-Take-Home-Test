@@ -1,5 +1,5 @@
 // Setting up basic configurations.
-import { COIN_API, API_KEY } from '@env';
+//import { COIN_API, API_KEY } from '@env';
 
 type ApiClient = {
   base_url: string,
@@ -9,8 +9,8 @@ type ApiClient = {
 class Configs {
 
   public static coinApiClient: ApiClient = {
-    base_url: COIN_API,
-    api_key: API_KEY,
+    base_url: process.env.COIN_API || '',
+    api_key: process.env.API_KEY || '',
   };
 }
 

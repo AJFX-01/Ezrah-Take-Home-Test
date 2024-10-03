@@ -35,6 +35,7 @@ const DrawerNavigator = () => (
   }}>
     <Drawer.Screen name="MainView" component={StackView} />
     <Drawer.Screen name="Settings" component={Settings} />
+    
   </Drawer.Navigator>
 );
 
