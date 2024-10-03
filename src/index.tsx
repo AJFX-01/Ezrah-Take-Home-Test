@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import App from './routes';
 import { QueryClientProvider, QueryClient} from '@tanstack/react-query';
 

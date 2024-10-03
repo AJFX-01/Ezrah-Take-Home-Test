@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
 import {
   View,
@@ -41,9 +42,12 @@ const Tokens: React.FC = () => {
   const { isPending, error, data } = useQuery({
     queryKey: ['tokenList'],
     queryFn: async () => {
-      const data = (await coinApi.getTokens());
+      const data = await coinApi.getTokens();
+      console.log(data);
       if (data) {
         return data.data;
+      } else if (error) {
+        throw new Error('Failed to fetch token list');
       }
     },
   });
