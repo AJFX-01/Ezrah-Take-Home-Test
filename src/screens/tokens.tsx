@@ -33,7 +33,7 @@ const Tokens: React.FC = () => {
       <TopBar />
       <AdvertisementBanner />
       <TabBar activeTab={activeTab} onTabPress={setActiveTab} />
-      <CryptoListHeader />
+      <CryptoListHeader header1={'Name'} header2={'Last Price'} header3={'24h chng%'}/>
       {isPending ? <Loader /> : error ?
         <View style={styles.textCon}>
           <Text style={styles.texx}>An error occured.Please try again!</Text>

@@ -17,20 +17,20 @@ import Settings from './screens/settings';
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
-const StackView = () => {
-  return (<Stack.Navigator screenOptions={
-    {
-      headerShown: false,
-    }
-  }>
-    <Stack.Screen name="Tokens" component={Tokens} />
-    <Stack.Screen name="SingleToken" component={SingleToken} />
-  </Stack.Navigator>);
-};
+// const StackView = () => {
+//   return (<Stack.Navigator screenOptions={
+//     {
+//       headerShown: false,
+//     }
+//   }>
+//     <Stack.Screen name="Tokens" component={Tokens} />
+//     <Stack.Screen name="SingleToken" component={SingleToken} />
+//   </Stack.Navigator>);
+// };
 
 const DrawerNavigator = () => (
   <Drawer.Navigator screenOptions={{ headerShown: false}}>
-    <Drawer.Screen name="Token" component={StackView} />
+    {/* <Drawer.Screen name="Token" component={StackView} /> */}
     <Drawer.Screen name="Settings" component={Settings} />
   </Drawer.Navigator>
 );
