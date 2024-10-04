@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   tab: {
-    paddingVertical: 10,
+    paddingVertical: 5,
     paddingHorizontal: 15,
   },
   activeTab: {
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#FFD700',
   },
   tabText: {
-    fontSize: 14,
+    fontSize: 10,
     color: '#333',
   },
 });

@@ -29,13 +29,9 @@ const StackView = () => {
 };
 
 const DrawerNavigator = () => (
-  <Drawer.Navigator screenOptions={{
-    headerTransparent: true,
-    headerTitle: '',
-  }}>
-    <Drawer.Screen name="MainView" component={StackView} />
+  <Drawer.Navigator screenOptions={{ headerShown: false}}>
+    <Drawer.Screen name="Token" component={StackView} />
     <Drawer.Screen name="Settings" component={Settings} />
-    
   </Drawer.Navigator>
 );
 

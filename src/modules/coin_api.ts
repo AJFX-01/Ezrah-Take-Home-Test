@@ -87,7 +87,7 @@ class CoinApi {
       if (!data || !data.status || data.status.error_code !== 0) {
         throw new Error(`API returned error: ${data.status.error_message || 'Unknown error'}`);
       }
-      console.log(data);
+      
       return data;
 
     } catch (error: any) {
