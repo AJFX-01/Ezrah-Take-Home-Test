@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';  // You can replace with other icons as necessary
 import TopBar from '../components/topbar';
-import { CryptoListHeader } from '../components/list';
+import { FavoriteHeader } from '../components/favoriteheader';
+import Favorites from '../components/favorites';
+import { FavoriteToken } from '../../types/types';
+import { getFavoriteTokens } from '../utils/constants';
 
 const WalletScreen = () => {
 
   const [showBalance, setShowBalance] = useState<boolean>(false);
+  const [favoriteData, setFavoriteData] = useState<FavoriteToken[]>([]);
 
   const handleBalanceToggle = () => {
     setShowBalance(!showBalance);
   };
+
+  useEffect(() => {
+    getFavoriteTokens().then(tokens => setFavoriteData(tokens));
+  }, []);
+
 
   return (
     <>
@@ -96,7 +105,18 @@ const WalletScreen = () => {
         <View>
           <Text style={styles.accountHeader}>Favorites</Text>
         </View>
-        <CryptoListHeader header1={'Name'} header2={'Total'} header3={null}/>
+        <FavoriteHeader/>
+        <ScrollView>
+          {favoriteData.length > 0 ? (
+            favoriteData.map((data, index) => (
+              <Favorites key={index} name={data.name} balance={data.balance} balance2={data.balance2}/>
+            ))
+          ) : (
+            <View style={styles.textCon}>
+                <Text style={styles.texx}>No Favorites Yet</Text>
+              </View>
+          )}
+        </ScrollView>
       </ScrollView>
       </>
   );
@@ -215,6 +235,17 @@ const styles = StyleSheet.create({
     marginBottom: 7,
     color: '#000',
     textAlign: 'left',
+  },
+  texx: {
+    fontSize: 12,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    marginHorizontal: 'auto',
+  },
+  textCon: {
+    flex: 1,
+    justifyContent: 'center',
+    marginHorizontal: 'auto',
   },
 });
 

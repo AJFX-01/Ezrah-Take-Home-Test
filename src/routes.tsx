@@ -30,7 +30,7 @@ const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => (
   <Drawer.Navigator screenOptions={{ headerShown: false}}>
-    {/* <Drawer.Screen name="Token" component={StackView} /> */}
+    <Drawer.Screen name="Tokens" component={Tokens} />
     <Drawer.Screen name="Settings" component={Settings} />
   </Drawer.Navigator>
 );

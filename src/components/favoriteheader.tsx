@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
 
-export const CryptoListHeader : React.FC = () => {
+export const FavoriteHeader : React.FC = () => {
     return (
         <View style={styles.headerContainer}>
             <Text style={styles.headerText}>Name</Text>
@@ -33,6 +33,6 @@ const styles = StyleSheet.create({
         width: '40%',
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-end',
     },
 });

@@ -1,7 +1,47 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import Icon  from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const CryptoListItem = (({ name , price, change }) => {
+
+    const [isFavorite, setIsFavorite] = useState<boolean>(false);
+
+    const checkIfFavorite = async () => {
+        try {
+            const favorites = await AsyncStorage.getItem('@favorites');
+            const favoriteList = favorites ? JSON.parse(favorites) : [];
+            const isFav = favoriteList.some(token => token.name === name);
+            setIsFavorite(isFav);
+        } catch (error) {
+            console.log('Error checking favorites', error);
+        }
+    };
+
+    const toggleFavorite = async () => {
+        try {
+            const favorites = await AsyncStorage.getItem('@favorites');
+            let favoriteList = favorites ? JSON.parse(favorites) : [];
+
+            if (isFavorite) {
+                // Remove from favorites
+                favoriteList = favoriteList.filter(token => token.name !== name);
+            } else {
+                // Add to favorites
+                favoriteList.push({ name, balance: '15.00', balance2: '0.000321' });
+            }
+
+            await AsyncStorage.setItem('@favorites', JSON.stringify(favoriteList));
+            setIsFavorite(!isFavorite); // Toggle the favorite state
+        } catch (error) {
+            console.log('Error updating favorites', error);
+        }
+    };
+
+    useEffect(() => {
+        checkIfFavorite();
+    }, []);
+
     const getColor = (change) => change < 0 ? '#ff4d4d' : '#4CAF50';
 
     return (
@@ -9,7 +49,23 @@ const CryptoListItem = (({ name , price, change }) => {
             <View style={styles.nameContainer}>
                 <Text style={styles.nameText}>{name}</Text>
             </View>
-
+            <View style={styles.heart}>
+                <TouchableOpacity onPress={toggleFavorite}>
+                    {isFavorite ? (
+                        <Icon
+                            name="heart"
+                            size={15}
+                            color={'red'}
+                        />
+                    ) : (
+                        <Icon
+                            name="heart-outline"
+                            size={15}
+                            color={'red'}
+                        />
+                    )}
+                </TouchableOpacity>
+            </View>
             <View style={styles.priceChangeContainer}>
                 <View style={styles.priceTxt}>
                     <Text style={styles.priceText}>{price}</Text>
@@ -31,13 +87,18 @@ export const CryptoListHeader = () => {
             <Text style={styles.headerText}>Name</Text>
             <View style={styles.header2}>
                 <Text style={styles.headerText}>Last Price</Text>
-                <Text style={styles.headerText}>24h chg%</Text>
+                <Text style={styles.headerText}>24h chng%</Text>
             </View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    heart: {
+        justifyContent : 'center',
+        alignSelf : 'center',
+        alignContent : 'center',
+    },
     // Header styles
     headerContainer: {
         flexDirection: 'row',
@@ -70,7 +131,9 @@ const styles = StyleSheet.create({
         borderBottomColor: '#eee',
     },
     nameContainer: {
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
+        flexDirection: 'row',
+        width: '30%',
     },
     nameText: {
         fontSize: 13,
@@ -79,21 +142,23 @@ const styles = StyleSheet.create({
     priceChangeContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        width: '40%', // Adjust width to control space between price and change
+        width: '45%', // Adjust width to control space between price and change
     },
     priceText: {
         fontSize: 12,
         color: 'black',
         fontWeight: '600',
+        textAlign: 'right',
 
     },
     priceText2: {
         fontSize: 9,
         color: '#999',
+        textAlign: 'right',
     },
     priceTxt:{
        flexDirection: 'column',
-
+        width: '50%',
     },
     changeContainer: {
         paddingVertical: 5,

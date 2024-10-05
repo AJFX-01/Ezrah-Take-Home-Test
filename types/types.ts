@@ -10,3 +10,10 @@ export interface TokenData  {
         };
     }
 }
+
+
+export interface FavoriteToken {
+    name: string;
+    balance: string;
+    balance2: string;
+}

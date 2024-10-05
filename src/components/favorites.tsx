@@ -1,26 +1,21 @@
 import { View, Text } from 'react-native';
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { TokenData } from '../../types/types';
+import { FavoriteToken } from '../../types/types';
 
-const Favorites : React.FC<TokenData> = (data) => {
+const Favorites : React.FC<FavoriteToken> = (data) => {
 
     return (
         <View style={styles.itemContainer}>
             <View style={styles.nameContainer}>
-                <Text style={styles.nameText}>{data.symbol}</Text>
+                <Text style={styles.nameText}>{data.name}</Text>
             </View>
 
             <View style={styles.priceChangeContainer}>
                 <View style={styles.priceTxt}>
-                    <Text style={styles.priceText}>{data.quote.USD.price}</Text>
-                    <Text style={styles.priceText2}>${data.quote.USD.price}</Text>
+                    <Text style={styles.priceText}>{data.balance2}</Text>
+                    <Text style={styles.priceText2}>${data.balance}</Text>
                 </View>
-                {/* <View style={[styles.changeContainer, { backgroundColor: getColor(change) }]}>
-                    <Text style={styles.changeText}>
-                        {change}%
-                    </Text>
-                </View> */}
             </View>
         </View>
     );
@@ -34,6 +29,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         borderBottomWidth: 1,
         borderBottomColor: '#eee',
+        backgroundColor: '#fff',
     },
     nameContainer: {
         justifyContent: 'center',
@@ -41,25 +37,27 @@ const styles = StyleSheet.create({
     nameText: {
         fontSize: 13,
         fontWeight: 'bold',
+        color: '#ffb31a',
     },
     priceChangeContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-end',
         width: '40%', // Adjust width to control space between price and change
     },
     priceText: {
         fontSize: 12,
         color: 'black',
         fontWeight: '600',
+        textAlign: 'left',
 
     },
     priceText2: {
         fontSize: 9,
         color: '#999',
+        textAlign: 'left',
     },
     priceTxt:{
        flexDirection: 'column',
-
     },
     changeContainer: {
         paddingVertical: 5,
