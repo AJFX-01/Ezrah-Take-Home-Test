@@ -6,6 +6,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import SingleToken from './screens/single-tokens';
 import Tokens from './screens/tokens';
 import Settings from './screens/settings';
+import CryptoDashboard from './screens/test';
 import { TokenData } from '../types/types';
 
 // the aim is to have 3 simple screens.
@@ -17,7 +18,8 @@ import { TokenData } from '../types/types';
 export type RootStackParamList = {
   Tokens: undefined;
   Settings: undefined;
-  SingleToken: { crypto: TokenData }; // Passing crypto data
+  SingleToken: { crypto: TokenData }; 
+  CryptoDashboard: undefined // Passing crypto data
 };
 
 
@@ -33,14 +35,15 @@ const StackView = () => {
     <Stack.Screen name="Tokens" component={Tokens} />
     <Stack.Screen name="Settings" component={Settings} />
     <Stack.Screen name="SingleToken" component={SingleToken} />
+    <Stack.Screen name="CryptoDashboard" component={CryptoDashboard} />
   </Stack.Navigator>);
 };
 
 const DrawerNavigator = () => (
   <Drawer.Navigator screenOptions={{ headerShown: false}}>
-    <Drawer.Screen name="Tokens" component={StackView} />
-    {/* <Drawer.Screen name="Settings" component={Settings} />
-    <Drawer.Screen name="SingleToken" component={SingleToken} /> */}
+    <Drawer.Screen name="Main" component={StackView} />
+    <Drawer.Screen name="Settings" component={Settings} />
+    <Drawer.Screen name="About" component={CryptoDashboard} />
   </Drawer.Navigator>
 );
 

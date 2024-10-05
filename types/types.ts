@@ -26,6 +26,10 @@ export interface FavoriteToken {
 
 export interface ChartData {
     symbol_id: string;
-    time_exchange: string;
+    time_exchange: Date;
     ask_price: number;
-};
+}
+
+export interface CryptoLineChartProps {
+    data : ChartData[];
+}

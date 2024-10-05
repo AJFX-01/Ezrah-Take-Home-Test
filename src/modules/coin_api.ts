@@ -97,9 +97,10 @@ class CoinApi {
   }
 
 
-  async getChartData(symbol_id: string, date : any) {
+  async getChartData(symbol_id: string, date1 : any, date2: any) {
     try {
-      const url = `${Configs.coinApiClient.base_url2}quotes/BINANCE_SPOT_${symbol_id}/history?date=${date}&limit=20`
+      const url = `${Configs.coinApiClient.base_url2}quotes/BINANCE_SPOT_${symbol_id}/history?time_start=${date1}&time_end=${date2}&limit=100`
+      console.log(url);
       const response = await fetch(url, {
         method: 'GET',
         headers: {
