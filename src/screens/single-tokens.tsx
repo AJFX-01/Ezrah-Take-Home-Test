@@ -1,20 +1,15 @@
 import React from 'react';
 import {View, Text} from 'react-native';
+import TopBar from '../components/topbar';
 
-
-export default function Tokens(): React.JSX.Element {
- return (
-
-    <>
-      <View style={{
-        flex: 1,
-        justifyContent: 'center',
-        marginHorizontal: 'auto',
-      }}>
-        <Text>Single token view</Text>
-      </View>
-
-    </>
-
- );
+const SingleTokens : React.FC = () => {
+  return (
+    <View>
+      <TopBar/>
+      
+    </View>
+  );
 }
+
+
+export default SingleTokens;

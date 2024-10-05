@@ -8,8 +8,6 @@ import CoinApi from '../modules/coin_api';
 import { useQuery } from '@tanstack/react-query';
 import { FavoriteToken, TokenData } from '../../types/types';
 import Loader from '../components/loader';
-import { FavoriteHeader } from '../components/favoriteheader';
-import Favorites from '../components/favorites';
 import { getFavoriteTokens } from '../utils/constants';
 
 const coinApi = new CoinApi();
@@ -34,14 +32,18 @@ const Tokens: React.FC = () => {
   }, []);
   const cryptocurrencies: TokenData[] = data || [];
 
+  const favoriteTokens = cryptocurrencies.filter(crypto =>
+    favoriteData.some(fav => fav.name === crypto.symbol)
+  );
+
   return (
     <View style={styles.container}>
       <TopBar />
       <AdvertisementBanner />
       <TabBar activeTab={activeTab} onTabPress={setActiveTab} />
+      <CryptoListHeader/>
       {activeTab && activeTab === 'Hot' ? (
         <>
-          <CryptoListHeader/>
         {isPending ? <Loader /> : error ?
           <View style={styles.textCon}>
             <Text style={styles.texx}>An error occured.Please try again!</Text>
@@ -66,18 +68,27 @@ const Tokens: React.FC = () => {
         </>
         ) : (
           <>
-            <FavoriteHeader/>
-            <ScrollView>
-              {favoriteData.length > 0 ? (
-                favoriteData.map((fdata, index) => (
-                  <Favorites key={index} name={fdata.name} balance={fdata.balance} balance2={fdata.balance2}/>
-                ))
-              ) : (
-                <View style={styles.textCon}>
+          {isPending ? <Loader /> : error ?
+            <View style={styles.textCon}>
+              <Text style={styles.texx}>An error occured. Please try again!</Text>
+            </View> : (
+              <ScrollView>
+                {favoriteTokens.length > 0 ? (
+                  favoriteTokens.map((crypto, index) => (
+                    <CryptoListItem
+                      key={index}
+                      name={crypto.symbol}
+                      price={crypto.quote.USD.price.toFixed(2)}
+                      change={crypto.quote.USD.percent_change_24h.toFixed(2)}
+                    />
+                  ))
+                ) : (
+                  <View style={styles.textCon}>
                     <Text style={styles.texx}>No Favorites Yet</Text>
                   </View>
-              )}
-            </ScrollView>
+                )}
+              </ScrollView>
+            )}
           </>
         )}
     </View>

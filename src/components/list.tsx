@@ -86,7 +86,7 @@ export const CryptoListHeader = () => {
         <View style={styles.headerContainer}>
             <Text style={styles.headerText}>Name</Text>
             <View style={styles.header2}>
-                <Text style={styles.headerText}>Last Price</Text>
+                <Text style={styles.headerText2}>Last Price</Text>
                 <Text style={styles.headerText}>24h chng%</Text>
             </View>
         </View>
@@ -113,9 +113,17 @@ const styles = StyleSheet.create({
         fontSize: 9,
         fontWeight: 'bold',
         color: '#d3d3d3',
+
+    },
+    headerText2: {
+        fontSize: 9,
+        fontWeight: 'bold',
+        color: '#d3d3d3',
+        justifyContent: 'flex-end',
+
     },
     header2: {
-        width: '40%',
+        width: '35%',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',

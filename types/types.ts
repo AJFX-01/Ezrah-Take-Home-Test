@@ -17,3 +17,10 @@ export interface FavoriteToken {
     balance: string;
     balance2: string;
 }
+
+
+export interface ChartData {
+    symbol_id: string;
+    time_exchange: string;
+    ask_price: number;
+};
