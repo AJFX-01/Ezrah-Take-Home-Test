@@ -1,9 +1,13 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-const TabBar = ({ activeTab, onTabPress }) => {
+type TapBARprops = {
+    activeTab: string;
+    onTabPress: (tab: string) => void;
+  };
+
+const TabBar : React.FC<TapBARprops> = ({ activeTab, onTabPress }) => {
   const tabs = ['Favorites', 'Hot', 'Gainers', 'Losers', 'New Listings'];
-  
   return (
     <View style={styles.tabContainer}>
       {tabs.map((tab, index) => (

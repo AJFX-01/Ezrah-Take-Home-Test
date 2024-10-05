@@ -160,69 +160,6 @@ const SingleTokens: React.FC<propsType> = (props) => {
             <Text style={styles.texx}>No Order Book Data found</Text>
           </View>
         )}
-
-
-        {/* <View style={styles.orderRow}>
-          <View style={styles.OrderRowinner}>
-            <Text style={styles.bidText}>19.667</Text>
-            <Text style={styles.bidTextprice}>62,133.9</Text>
-          </View>
-          <View style={styles.OrderRowinner}>
-            <Text style={styles.askTextprice}>62,134.0</Text>
-            <Text style={styles.askText}>0,134.0</Text>
-          </View>
-        </View> */}
-        {/* <View style={styles.orderRow}>
-          <View style={styles.OrderRowinner}>
-            <Text style={styles.bidText}>19.667</Text>
-            <Text style={styles.bidTextprice}>62,133.9</Text>
-          </View>
-          <View style={styles.OrderRowinner}>
-            <Text style={styles.askTextprice}>62,134.0</Text>
-            <Text style={styles.askText}>0,134.0</Text>
-          </View>
-        </View>
-        <View style={styles.orderRow}>
-          <View style={styles.OrderRowinner}>
-            <Text style={styles.bidText}>19.667</Text>
-            <Text style={styles.bidTextprice}>62,133.9</Text>
-          </View>
-          <View style={styles.OrderRowinner}>
-            <Text style={styles.askTextprice}>62,134.0</Text>
-            <Text style={styles.askText}>0,134.0</Text>
-          </View>
-        </View>
-        <View style={styles.orderRow}>
-          <View style={styles.OrderRowinner}>
-            <Text style={styles.bidText}>19.667</Text>
-            <Text style={styles.bidTextprice}>62,133.9</Text>
-          </View>
-          <View style={styles.OrderRowinner}>
-            <Text style={styles.askTextprice}>62,134.0</Text>
-            <Text style={styles.askText}>0,134.0</Text>
-          </View>
-        </View>
-        <View style={styles.orderRow}>
-          <View style={styles.OrderRowinner}>
-            <Text style={styles.bidText}>19.667</Text>
-            <Text style={styles.bidTextprice}>62,133.9</Text>
-          </View>
-          <View style={styles.OrderRowinner}>
-            <Text style={styles.askTextprice}>62,134.0</Text>
-            <Text style={styles.askText}>0,134.0</Text>
-          </View>
-        </View>
-        <View style={styles.orderRow}>
-          <View style={styles.OrderRowinner}>
-            <Text style={styles.bidText}>19.667</Text>
-            <Text style={styles.bidTextprice}>62,133.9</Text>
-          </View>
-          <View style={styles.OrderRowinner}>
-            <Text style={styles.askTextprice}>62,134.0</Text>
-            <Text style={styles.askText}>0,134.0</Text>
-          </View>
-        </View> */}
-        {/* Add more orders as needed */}
       </View>
 
 

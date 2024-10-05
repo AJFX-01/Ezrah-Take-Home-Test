@@ -64,9 +64,6 @@ const Tokens = (props : propsType) => {
                   <CryptoListItem
                     key={index}
                     data={crypto}
-                    // name={crypto.symbol}
-                    // price={crypto.quote.USD.price.toFixed(2)}
-                    // change={crypto.quote.USD.percent_change_24h.toFixed(2)}
                     onPress={() =>handlePress(crypto)}
                   />
                 ))
@@ -91,9 +88,6 @@ const Tokens = (props : propsType) => {
                       key={index}
                       data={crypto}
                       onPress={() => handlePress(crypto)}
-                      // name={crypto.symbol}
-                      // price={crypto.quote.USD.price.toFixed(2)}
-                      // change={crypto.quote.USD.percent_change_24h.toFixed(2)}
                     />
                   ))
                 ) : (

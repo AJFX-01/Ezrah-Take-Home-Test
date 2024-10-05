@@ -14,7 +14,7 @@ const CryptoListItem : React.FC<CryptoListItemProps> = ({ data, onPress }) => {
         try {
             const favorites = await AsyncStorage.getItem('@favorites');
             const favoriteList = favorites ? JSON.parse(favorites) : [];
-            const isFav = favoriteList.some(token => token.name === data.symbol);
+            const isFav = favoriteList.some((token: { name: string; }) => token.name === data.symbol);
             setIsFavorite(isFav);
         } catch (error) {
             console.log('Error checking favorites', error);
@@ -28,7 +28,7 @@ const CryptoListItem : React.FC<CryptoListItemProps> = ({ data, onPress }) => {
 
             if (isFavorite) {
                 // Remove from favorites
-                favoriteList = favoriteList.filter(token => token.name !== data.symbol);
+                favoriteList = favoriteList.filter((token: { name: string; }) => token.name !== data.symbol);
             } else {
                 // Add to favorites
                 favoriteList.push({ name: data.symbol, balance: '15.00', balance2: '0.000321' });
@@ -43,6 +43,7 @@ const CryptoListItem : React.FC<CryptoListItemProps> = ({ data, onPress }) => {
 
     useEffect(() => {
         checkIfFavorite();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const getColor = (change : number) => change < 0 ? '#ff4d4d' : '#4CAF50';
