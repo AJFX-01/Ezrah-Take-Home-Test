@@ -9,12 +9,22 @@ import { useQuery } from '@tanstack/react-query';
 import { FavoriteToken, TokenData } from '../../types/types';
 import Loader from '../components/loader';
 import { getFavoriteTokens } from '../utils/constants';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../routes';
 
 const coinApi = new CoinApi();
 
-const Tokens: React.FC = () => {
+type propsType = NativeStackScreenProps<RootStackParamList, 'Tokens'>;
+
+const Tokens = (props : propsType) => {
   const [activeTab, setActiveTab] = useState<string>('Hot');
   const [favoriteData, setFavoriteData] = useState<FavoriteToken[]>([]);
+  const { navigation } = props;
+
+  const handlePress = (crypto: TokenData) => {
+    navigation.navigate('SingleToken', {crypto});
+  };
+
   const { isPending, error, data } = useQuery({
     queryKey: ['tokenList'],
     queryFn: async () => {
@@ -53,9 +63,11 @@ const Tokens: React.FC = () => {
                 cryptocurrencies.map((crypto, index) => (
                   <CryptoListItem
                     key={index}
-                    name={crypto.symbol}
-                    price={crypto.quote.USD.price.toFixed(2)}
-                    change={crypto.quote.USD.percent_change_24h.toFixed(2)}
+                    data={crypto}
+                    // name={crypto.symbol}
+                    // price={crypto.quote.USD.price.toFixed(2)}
+                    // change={crypto.quote.USD.percent_change_24h.toFixed(2)}
+                    onPress={() =>handlePress(crypto)}
                   />
                 ))
               ) : (
@@ -77,9 +89,11 @@ const Tokens: React.FC = () => {
                   favoriteTokens.map((crypto, index) => (
                     <CryptoListItem
                       key={index}
-                      name={crypto.symbol}
-                      price={crypto.quote.USD.price.toFixed(2)}
-                      change={crypto.quote.USD.percent_change_24h.toFixed(2)}
+                      data={crypto}
+                      onPress={() => handlePress(crypto)}
+                      // name={crypto.symbol}
+                      // price={crypto.quote.USD.price.toFixed(2)}
+                      // change={crypto.quote.USD.percent_change_24h.toFixed(2)}
                     />
                   ))
                 ) : (

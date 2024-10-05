@@ -11,6 +11,11 @@ export interface TokenData  {
     }
 }
 
+export interface CryptoListItemProps {
+    data: TokenData;
+    onPress: () => void;  // Event handler for clicking
+  }
+
 
 export interface FavoriteToken {
     name: string;

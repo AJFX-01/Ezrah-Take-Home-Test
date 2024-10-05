@@ -39,14 +39,14 @@ import Configs from '../config/index';
 class CoinApi {
   // Utility method to send a request to the CoinApi
   async send(routes: string, method = 'GET') {
-    const apiUrl = 'https://pro-api.coinmarketcap.com/' + routes;
+    const apiUrl = Configs.coinApiClient.base_url + routes;
     console.log(`Requesting ${apiUrl}`);
 
     try {
       const response = await fetch(apiUrl, {
         method,
         headers: {
-          'X-CMC_PRO_API_KEY': '45c006ad-98b4-4756-9894-2c25f8467852',
+          'X-CMC_PRO_API_KEY': Configs.coinApiClient.api_key,
           'Accept': 'application/json',
         },
       });
@@ -93,6 +93,31 @@ class CoinApi {
     } catch (error: any) {
       console.error(`Error fetching tokens: ${error.message}`);
       throw new Error(`Failed to fetch tokens: ${error.message}`);
+    }
+  }
+
+
+  async getChartData(symbol_id: string, date : any) {
+    try {
+      const url = `${Configs.coinApiClient.base_url2}quotes/BINANCE_SPOT_${symbol_id}/history?date=${date}&limit=20`
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CoinAPI-Key': Configs.coinApiClient.api_key2
+        },
+      });
+  
+      // Parse the response
+      if (!response.ok) {
+        throw new Error(`Error fetching data: ${response.statusText}`);
+      }
+  
+      const data = await response.json();
+      return data;
+    } catch (error: any) {
+      console.error(`Error fetching chart data: ${error.message}`);
+      throw new Error(`Failed to fetch chart data: ${error.message}`);
     }
   }
 }

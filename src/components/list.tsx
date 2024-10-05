@@ -2,8 +2,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon  from 'react-native-vector-icons/MaterialCommunityIcons';
+import { CryptoListItemProps } from '../../types/types';
 
-const CryptoListItem = (({ name , price, change }) => {
+
+
+const CryptoListItem : React.FC<CryptoListItemProps> = ({ data, onPress }) => {
 
     const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
@@ -11,7 +14,7 @@ const CryptoListItem = (({ name , price, change }) => {
         try {
             const favorites = await AsyncStorage.getItem('@favorites');
             const favoriteList = favorites ? JSON.parse(favorites) : [];
-            const isFav = favoriteList.some(token => token.name === name);
+            const isFav = favoriteList.some(token => token.name === data.symbol);
             setIsFavorite(isFav);
         } catch (error) {
             console.log('Error checking favorites', error);
@@ -25,10 +28,10 @@ const CryptoListItem = (({ name , price, change }) => {
 
             if (isFavorite) {
                 // Remove from favorites
-                favoriteList = favoriteList.filter(token => token.name !== name);
+                favoriteList = favoriteList.filter(token => token.name !== data.symbol);
             } else {
                 // Add to favorites
-                favoriteList.push({ name, balance: '15.00', balance2: '0.000321' });
+                favoriteList.push({ name: data.symbol, balance: '15.00', balance2: '0.000321' });
             }
 
             await AsyncStorage.setItem('@favorites', JSON.stringify(favoriteList));
@@ -42,44 +45,46 @@ const CryptoListItem = (({ name , price, change }) => {
         checkIfFavorite();
     }, []);
 
-    const getColor = (change) => change < 0 ? '#ff4d4d' : '#4CAF50';
+    const getColor = (change : number) => change < 0 ? '#ff4d4d' : '#4CAF50';
 
     return (
-        <View style={styles.itemContainer}>
-            <View style={styles.nameContainer}>
-                <Text style={styles.nameText}>{name}</Text>
-            </View>
-            <View style={styles.heart}>
-                <TouchableOpacity onPress={toggleFavorite}>
-                    {isFavorite ? (
-                        <Icon
-                            name="heart"
-                            size={15}
-                            color={'red'}
-                        />
-                    ) : (
-                        <Icon
-                            name="heart-outline"
-                            size={15}
-                            color={'red'}
-                        />
-                    )}
-                </TouchableOpacity>
-            </View>
-            <View style={styles.priceChangeContainer}>
-                <View style={styles.priceTxt}>
-                    <Text style={styles.priceText}>{price}</Text>
-                    <Text style={styles.priceText2}>${price}</Text>
+        <TouchableOpacity onPress={onPress}>
+            <View style={styles.itemContainer}>
+                <View style={styles.nameContainer}>
+                    <Text style={styles.nameText}>{data.symbol}</Text>
                 </View>
-                <View style={[styles.changeContainer, { backgroundColor: getColor(change) }]}>
-                    <Text style={styles.changeText}>
-                        {change}%
-                    </Text>
+                <View style={styles.heart}>
+                    <TouchableOpacity onPress={toggleFavorite}>
+                        {isFavorite ? (
+                            <Icon
+                                name="heart"
+                                size={15}
+                                color={'red'}
+                            />
+                        ) : (
+                            <Icon
+                                name="heart-outline"
+                                size={15}
+                                color={'red'}
+                            />
+                        )}
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.priceChangeContainer}>
+                    <View style={styles.priceTxt}>
+                        <Text style={styles.priceText}>{data.quote.USD.price.toFixed(2)}</Text>
+                        <Text style={styles.priceText2}>${data.quote.USD.price.toFixed(2)}</Text>
+                    </View>
+                    <View style={[styles.changeContainer, { backgroundColor: getColor(data.quote.USD.percent_change_24h) }]}>
+                        <Text style={styles.changeText}>
+                            {data.quote.USD.percent_change_24h.toFixed(2)}%
+                        </Text>
+                    </View>
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     );
-});
+};
 
 export const CryptoListHeader = () => {
     return (
