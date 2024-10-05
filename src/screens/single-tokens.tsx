@@ -11,16 +11,19 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { useQuery } from '@tanstack/react-query';
 import { ChartData } from '../../types/types';
+import { useNavigation } from '@react-navigation/native';
 
 
 const coinApi = new CoinApi();
-const screenWidth = Dimensions.get('window').width;
+
 
 type propsType = NativeStackScreenProps<RootStackParamList, 'SingleToken'>;
 
 const SingleTokens: React.FC<propsType> = (props) => {
   const { route } = props;
   const { crypto } = route.params;
+  const navigation = useNavigation();
+
 
 
   const { data, isLoading, isError } = useQuery({
@@ -40,8 +43,11 @@ const SingleTokens: React.FC<propsType> = (props) => {
   return (
     <ScrollView style={styles.container}>
       {/* Header Section */}
+
       <View style={styles.header}>
-        <Icon name="arrow-left" size={20} color="#000" />
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Icon name="arrow-left" size={20} color="#000" />
+        </TouchableOpacity>
         <View>
           <Text style={styles.cryptoTitle}>{crypto.symbol}/USDT</Text>
           <Text style={styles.subTitle}>Perpetual</Text>
