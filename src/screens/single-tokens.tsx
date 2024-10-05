@@ -1,6 +1,5 @@
 import React from 'react';
-import { Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import TopBar from '../components/topbar';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import CryptoLineChart from '../components/chart';
 import CoinApi from '../modules/coin_api';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -12,6 +11,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useQuery } from '@tanstack/react-query';
 import { ChartData } from '../../types/types';
 import { useNavigation } from '@react-navigation/native';
+import { formatLargeNumber, formatValue, getTextStyle } from '../utils/constants';
 
 
 const coinApi = new CoinApi();
@@ -65,8 +65,8 @@ const SingleTokens: React.FC<propsType> = (props) => {
         <View style={styles.statsContainerInner}>
           <View>
             <Text style={styles.price}>{crypto.quote.USD.price.toFixed(1)}</Text>
-            <Text style={styles.priceChange}>≈ ${crypto.quote.USD.price.toFixed(2)}<Text style={styles.priceChange2}>{crypto.quote.USD.percent_change_24h}%</Text> </Text>
-            <Text style={styles.priceMChange}>Mark Price <Text style={styles.priceMChange2}>{crypto.quote.USD.price.toFixed(1)}</Text> </Text>
+            <Text style={styles.priceChange}>≈ ${crypto.quote.USD.price.toFixed(2)}<Text style={[styles.priceChange2, getTextStyle(crypto.quote.USD.percent_change_24h)]}>  {formatValue(crypto.quote.USD.percent_change_24h)}%</Text> </Text>
+            <Text style={styles.priceMChange}>Mark Price <Text style={styles.priceMChange2}>  {crypto.quote.USD.price.toFixed(1)}</Text> </Text>
           </View>
           <View style={styles.statBoxContainer}>
             <View style={styles.statBoxContainerinner1}>
@@ -82,11 +82,11 @@ const SingleTokens: React.FC<propsType> = (props) => {
             <View style={styles.statBoxContainerinner2}>
               <View style={styles.statBox}>
                 <Text style={styles.statLabel}>24h Vol({crypto.symbol})</Text>
-                <Text style={styles.statValue}>{crypto.total_supply.toFixed(2)}</Text>
+                <Text style={styles.statValue}>{formatLargeNumber(crypto.total_supply)}</Text>
               </View>
               <View style={styles.statBox}>
                 <Text style={styles.statLabel}>24h Vol(USDT)</Text>
-                <Text style={styles.statValue}>{crypto.quote.USD.market_cap}</Text>
+                <Text style={styles.statValue}>{formatLargeNumber(crypto.quote.USD.market_cap)}</Text>
               </View>
             </View>
           </View>
@@ -113,23 +113,23 @@ const SingleTokens: React.FC<propsType> = (props) => {
       <View style={styles.tabsContainer}>
         <View>
           <Text style={styles.tabText}>Today</Text>
-          <Text style={styles.tabText2}>{crypto.quote.USD.percent_change_24h.toFixed(2)}%</Text>
+          <Text style={[styles.tabText2, getTextStyle(crypto.quote.USD.percent_change_24h)]}>{formatValue(crypto.quote.USD.percent_change_24h)}%</Text>
         </View>
         <View>
           <Text style={styles.tabText}>7 Days</Text>
-          <Text style={styles.tabText2}>{crypto.quote.USD.percent_change_7d.toFixed(2)}%</Text>
+          <Text style={[styles.tabText2, getTextStyle(crypto.quote.USD.percent_change_7d)]}>{formatValue(crypto.quote.USD.percent_change_7d)}%</Text>
         </View>
         <View>
           <Text style={styles.tabText}>30 Days</Text>
-          <Text style={styles.tabText2}>{crypto.quote.USD.percent_change_30d.toFixed(2)}%</Text>
+          <Text style={[styles.tabText2, getTextStyle(crypto.quote.USD.percent_change_30d)]}>{formatValue(crypto.quote.USD.percent_change_30d)}%</Text>
         </View>
         <View>
           <Text style={styles.tabText}>60 Days</Text>
-          <Text style={styles.tabText2}>{crypto.quote.USD.percent_change_60d.toFixed(2)}%</Text>
+          <Text style={[styles.tabText2, getTextStyle(crypto.quote.USD.percent_change_60d)]}>{formatValue(crypto.quote.USD.percent_change_60d)}%</Text>
         </View>
         <View>
           <Text style={styles.tabText}>90 Days</Text>
-          <Text style={styles.tabText2}>{crypto.quote.USD.percent_change_90d.toFixed(2)}%</Text>
+          <Text style={[styles.tabText2, getTextStyle(crypto.quote.USD.percent_change_90d)]}>{formatValue(crypto.quote.USD.percent_change_90d)}%</Text>
         </View>
       </View>
       {/* Order Book Section */}
